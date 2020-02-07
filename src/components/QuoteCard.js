@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const QuoteCard = (props) =>
+
   <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
@@ -12,14 +13,14 @@ const QuoteCard = (props) =>
       </div>
       <div className="float-right">
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-          <button onClick={props.upvoteQuote}
+          <button onClick={(e) => props.upvoteQuote(props.quote.id)}
             type="button"
             className="btn btn-primary"
 
           >
             Upvote
           </button>
-          <button
+          <button onClick={(e) => props.downvoteQuote(props.quote.id)}
             type="button"
             className="btn btn-secondary"
           >
@@ -37,29 +38,6 @@ const QuoteCard = (props) =>
     </div>
   </div>;
 
-const mapDispatchToProps = (dispatch) => {
-  return (
-    {
-      upvoteQuote: (quote) => {
-        dispatch({
-          type: 'UPVOTE_QUOTE',
-          quote: quote
-        })
-      },
 
-      downvoteQuote: (quote) => {
-        dispatch({
-          type: 'DOWNVOTE_QUOTE',
-          quote: quote
-        })
-      }
-    }
-  )
 
-}
-
-const mapStateToProps = state => {
-  return { quotes: state.quotes }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(QuoteCard);
+export default QuoteCard;
