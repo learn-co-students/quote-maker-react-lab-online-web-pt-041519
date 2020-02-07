@@ -58,4 +58,8 @@ const mapDispatchToProps = (dispatch) => {
 
 }
 
-export default connect(null, mapDispatchToProps)(QuoteCard);
+const mapStateToProps = state => {
+  return { quotes: state.quotes }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuoteCard);
