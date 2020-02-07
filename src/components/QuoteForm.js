@@ -18,10 +18,14 @@ class QuoteForm extends Component {
   }
 
   handleOnSubmit = event => {
-    event.preventDefault(),
-    <QuoteCard quote={this.state}/> 
-    const quote = {...this.state, id: uuid()}
-    addQuote(quote)
+    event.preventDefault()
+    
+    const quote = {...this.state, id: uuid(), votes: 0}
+
+    this.props.addQuote(quote)
+    // because of dispatch thingy
+
+    
     this.setState({
       content: '',
       author: ''
@@ -73,6 +77,19 @@ class QuoteForm extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return (
+    {
+      addQuote: (quote) => {
+        dispatch({
+          type: 'ADD_QUOTE',
+          quote: quote
+        })
+      }
+    }
+  )
 
+}
 //add arguments to connect as needed
-export default connect(addQuote)(QuoteForm);
+export default connect(null, mapDispatchToProps)(QuoteForm);
+// which component am I adding these props to (QuoteForm)

@@ -12,9 +12,10 @@ const QuoteCard = (props) =>
       </div>
       <div className="float-right">
         <div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
-          <button
+          <button onClick={props.upvoteQuote}
             type="button"
             className="btn btn-primary"
+
           >
             Upvote
           </button>
@@ -36,8 +37,25 @@ const QuoteCard = (props) =>
     </div>
   </div>;
 
-const mapStateToProps = state => {
-  return { quotes: state.quotes }
+const mapDispatchToProps = (dispatch) => {
+  return (
+    {
+      upvoteQuote: (quote) => {
+        dispatch({
+          type: 'UPVOTE_QUOTE',
+          quote: quote
+        })
+      },
+
+      downvoteQuote: (quote) => {
+        dispatch({
+          type: 'DOWNVOTE_QUOTE',
+          quote: quote
+        })
+      }
+    }
+  )
+
 }
 
-export default connect(mapStateToProps)(QuoteCard);
+export default connect(null, mapDispatchToProps)(QuoteCard);
