@@ -13,7 +13,6 @@ class App extends Component {
         <hr />
         <QuoteForm />
         <Quotes />
-        {/* <Quotes quotes={this.props.store.getState().quotes} /> */}
       </div>
     );
   }
