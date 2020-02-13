@@ -4,17 +4,25 @@ import { connect } from 'react-redux';
 import { addQuote } from '../actions/quotes';
 
 class QuoteForm extends Component {
-
-  state = {
-    //set up a controlled form with internal state
-  }
+    constructor() {
+      super()
+      this.state = {
+        content: '', 
+        author: '',
+        id: uuid
+      }
+    }
+  // state = {
+  //   content: '', 
+  //   author: '' 
+  // }
 
   handleOnChange = event => {
     // Handle Updating Component State
   }
 
   handleOnSubmit = event => {
-    // Handle Form Submit event default
+    event.preventDefault()
     // Create quote object from state
     // Pass quote object to action creator
     // Update component state to return to default state
