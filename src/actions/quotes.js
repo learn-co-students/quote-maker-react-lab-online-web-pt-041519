@@ -1,32 +1,28 @@
-export function addQuote(quote){
+  
+export const addQuote = quote => {
     return {
         type: 'ADD_QUOTE',
-        quote: {
-            author: quote.author,
-            content: quote.content,
-            id: quote.id,
-            votes: quote.votes
-        }
+        quote
     }
 }
 
-export function removeQuote(integer){
-    return{
+export const removeQuote = quoteId => {
+    return {
         type: 'REMOVE_QUOTE',
-        quoteId: integer
+        quoteId
     }
 }
 
-export function upvoteQuote(integer){
+export const upvoteQuote = quoteId => {
     return {
         type: 'UPVOTE_QUOTE',
-        quoteId: integer
+        quoteId
     }
 }
 
-export function downvoteQuote(integer){
-    return{
+export const downvoteQuote = quoteId => {
+    return {
         type: 'DOWNVOTE_QUOTE',
-        quoteId: integer
+        quoteId
     }
 }
